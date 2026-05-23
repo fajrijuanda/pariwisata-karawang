@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 async function getData() {
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/umkms', { next: { revalidate: 0 } });
+    const res = await fetch('http://127.0.0.1:8000/api/artikels', { next: { revalidate: 0 } });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
@@ -11,7 +11,7 @@ async function getData() {
   }
 }
 
-export default async function UmkmPage() {
+export default async function ArtikelPage() {
   const data = await getData();
 
   // Helper to strip HTML tags for preview
@@ -24,9 +24,9 @@ export default async function UmkmPage() {
     <main className="flex-1 flex flex-col py-16 px-6 md:px-12 bg-zinc-50 dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto w-full">
         <div className="mb-12 text-center animate-fade-in-up">
-          <h1 className="text-4xl font-bold text-zinc-900 dark:text-white mb-4 capitalize">Umkm Karawang</h1>
+          <h1 className="text-4xl font-bold text-zinc-900 dark:text-white mb-4 capitalize">Artikel Karawang</h1>
           <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-            Jelajahi berbagai umkm menarik yang ada di wilayah Kabupaten Karawang.
+            Jelajahi berbagai artikel menarik yang ada di wilayah Kabupaten Karawang.
           </p>
         </div>
         
@@ -34,16 +34,16 @@ export default async function UmkmPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {data.map((item: any, idx: number) => {
               let imgUrl = null;
-              if (item.photo) {
-                  if (Array.isArray(item.photo) && item.photo.length > 0) {
-                      imgUrl = item.photo[0];
-                  } else if (typeof item.photo === 'string') {
-                      imgUrl = item.photo;
+              if (item.thumbnail) {
+                  if (Array.isArray(item.thumbnail) && item.thumbnail.length > 0) {
+                      imgUrl = item.thumbnail[0];
+                  } else if (typeof item.thumbnail === 'string') {
+                      imgUrl = item.thumbnail;
                   }
               }
               
               return (
-              <Link href={`/umkm/${item.id}`} key={item.id} className="rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+              <Link href={`/artikel/${item.id}`} key={item.id} className="rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
                 <div className="h-56 bg-zinc-200 dark:bg-zinc-800 w-full flex items-center justify-center text-zinc-400 overflow-hidden relative">
                   <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/30 transition-colors duration-500 z-10"></div>
                   {imgUrl ? (
@@ -56,7 +56,7 @@ export default async function UmkmPage() {
                   <span className="text-xs font-bold text-secondary uppercase tracking-wider">{item.category || 'Umum'}</span>
                   <h3 className="text-xl font-semibold mt-2 mb-3 text-zinc-900 dark:text-white group-hover:text-primary transition-colors">{item.name || item.business_name || item.event_name || item.title}</h3>
                   <p className="text-zinc-600 dark:text-zinc-400 text-sm line-clamp-3">
-                    {stripHtml(item.product_description) || 'Deskripsi tidak tersedia.'}
+                    {stripHtml(item.content) || 'Deskripsi tidak tersedia.'}
                   </p>
                 </div>
               </Link>
@@ -67,7 +67,7 @@ export default async function UmkmPage() {
             <div className="w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl text-zinc-400">📄</span>
             </div>
-            <p className="text-zinc-500 dark:text-zinc-400 text-lg">Belum ada data umkm yang ditambahkan.</p>
+            <p className="text-zinc-500 dark:text-zinc-400 text-lg">Belum ada data artikel yang ditambahkan.</p>
           </div>
         )}
       </div>

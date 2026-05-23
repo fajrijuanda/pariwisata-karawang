@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\Umkms\Schemas;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 

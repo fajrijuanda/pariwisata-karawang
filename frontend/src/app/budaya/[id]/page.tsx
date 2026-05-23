@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 async function getDetail(id: string) {
   try {
-    const res = await fetch(`http://127.0.0.1:8000/api/destinasis/${id}`, { next: { revalidate: 0 } });
+    const res = await fetch(`http://127.0.0.1:8000/api/budayas/${id}`, { next: { revalidate: 0 } });
     if (!res.ok) return null;
     return res.json();
   } catch (error) {
@@ -11,14 +11,14 @@ async function getDetail(id: string) {
   }
 }
 
-export default async function DestinasiDetail({ params }: { params: { id: string } }) {
+export default async function BudayaDetail({ params }: { params: { id: string } }) {
   const data = await getDetail(params.id);
 
   if (!data) {
     return (
       <main className="flex-1 flex flex-col py-32 items-center justify-center text-center">
         <h1 className="text-3xl font-bold mb-4">Data Tidak Ditemukan</h1>
-        <Link href="/destinasi" className="text-primary hover:underline">Kembali ke daftar destinasi</Link>
+        <Link href="/budaya" className="text-primary hover:underline">Kembali ke daftar budaya</Link>
       </main>
     );
   }
@@ -41,9 +41,9 @@ export default async function DestinasiDetail({ params }: { params: { id: string
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
         <div className="relative z-20 text-center px-4 max-w-4xl animate-fade-in-up">
           <span className="px-3 py-1 rounded-full bg-secondary/80 text-white text-xs font-bold uppercase tracking-wider mb-4 inline-block">
-            {data.category || 'Wisata Alam'}
+            {data.category || 'Budaya'}
           </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">{data.name}</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">{data.name || data.business_name || data.event_name || data.title}</h1>
         </div>
       </section>
 
@@ -62,25 +62,15 @@ export default async function DestinasiDetail({ params }: { params: { id: string
               <div className="bg-zinc-50 dark:bg-zinc-950 p-6 rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm">
                 <h3 className="font-semibold text-zinc-900 dark:text-white mb-4 border-b pb-2 dark:border-zinc-800">Informasi Singkat</h3>
                 <ul className="text-sm">
+                  
                   <li className="flex flex-col mb-4">
-                    <span className="text-zinc-500 dark:text-zinc-400 mb-1">Harga Tiket Masuk</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.htm || 'Menyesuaikan'}</span>
-                  </li>
-                  <li className="flex flex-col mb-4">
-                    <span className="text-zinc-500 dark:text-zinc-400 mb-1">Jam Operasional</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.open_hours || 'Buka'}</span>
+                    <span className="text-zinc-500 dark:text-zinc-400 mb-1">Kategori</span>
+                    <span className="font-medium text-zinc-900 dark:text-white">{data.category || '-'}</span>
                   </li>
                   <li className="flex flex-col mb-4">
-                    <span className="text-zinc-500 dark:text-zinc-400 mb-1">Fasilitas</span>
-                    <div className="font-medium text-zinc-900 dark:text-white prose dark:prose-invert max-w-none text-sm" dangerouslySetInnerHTML={{__html: data.facilities || '-'}}></div>
+                    <span className="text-zinc-500 dark:text-zinc-400 mb-1">Sejarah</span>
+                    <div className="font-medium text-zinc-900 dark:text-white prose dark:prose-invert max-w-none text-sm" dangerouslySetInnerHTML={{__html: data.history || '-'}}></div>
                   </li>
-                  {data.map_coordinates && (
-                  <li className="flex flex-col mb-4 mt-6">
-                    <a href={data.map_coordinates} target="_blank" rel="noreferrer" className="w-full text-center px-4 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-green-700 transition-colors shadow">
-                      Lihat Rute di Peta
-                    </a>
-                  </li>
-                  )}
                 </ul>
               </div>
             </div>
