@@ -18,7 +18,13 @@ class AgendaResource extends Resource
 {
     protected static ?string $model = Agenda::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
+
+    protected static ?string $navigationLabel = 'Agenda & Event';
+
+    protected static ?string $pluralModelLabel = 'Agenda & Event';
+
+    protected static ?string $modelLabel = 'Agenda & Event';
 
     public static function form(Schema $schema): Schema
     {

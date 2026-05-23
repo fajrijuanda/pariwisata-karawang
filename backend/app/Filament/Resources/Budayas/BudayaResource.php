@@ -18,7 +18,13 @@ class BudayaResource extends Resource
 {
     protected static ?string $model = Budaya::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationIcon = 'heroicon-o-sparkles';
+
+    protected static ?string $navigationLabel = 'Budaya & Seni';
+
+    protected static ?string $pluralModelLabel = 'Budaya & Seni';
+
+    protected static ?string $modelLabel = 'Budaya & Seni';
 
     public static function form(Schema $schema): Schema
     {

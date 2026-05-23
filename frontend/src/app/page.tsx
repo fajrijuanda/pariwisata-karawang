@@ -70,7 +70,7 @@ export default async function Home() {
                     {/* Placeholder Image until actual API uploads are handled */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"></div>
-                    <span className="z-0">No Image</span>
+                    <span className="z-0">Belum Ada Foto</span>
                   </div>
                   <div className="p-8">
                     <span className="text-xs font-bold text-secondary uppercase tracking-wider">{item.category || 'Wisata Alam'}</span>

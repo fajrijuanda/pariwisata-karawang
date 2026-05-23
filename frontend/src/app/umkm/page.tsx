@@ -50,7 +50,7 @@ export default async function UmkmPage() {
                   {imgUrl ? (
                       <img src={imgUrl} alt="Thumbnail" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   ) : (
-                      <span className="z-0">No Image</span>
+                      <span className="z-0">Belum Ada Foto</span>
                   )}
                 </div>
                 <div className="p-6">

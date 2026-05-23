@@ -18,7 +18,13 @@ class DestinasiResource extends Resource
 {
     protected static ?string $model = Destinasi::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationIcon = 'heroicon-o-map';
+
+    protected static ?string $navigationLabel = 'Destinasi Wisata';
+
+    protected static ?string $pluralModelLabel = 'Destinasi Wisata';
+
+    protected static ?string $modelLabel = 'Destinasi Wisata';
 
     public static function form(Schema $schema): Schema
     {
