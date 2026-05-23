@@ -6,7 +6,6 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class ArtikelForm
@@ -16,15 +15,24 @@ class ArtikelForm
         return $schema
             ->components([
                 TextInput::make('title')
+                    ->label('Judul Artikel')
                     ->required(),
                 TextInput::make('slug')
+                    ->label('Slug / Tautan Unik')
                     ->required(),
-                TextInput::make('category'),
-                Textarea::make('content')
+                TextInput::make('category')
+                    ->label('Kategori'),
+                RichEditor::make('content')
+                    ->label('Konten Utama / Isi Berita')
                     ->columnSpanFull(),
-                TextInput::make('author'),
-                TextInput::make('thumbnail'),
-                DatePicker::make('published_at'),
+                TextInput::make('author')
+                    ->label('Penulis / Sumber'),
+                FileUpload::make('thumbnail')
+                    ->label('Gambar Utama / Sampul')
+                    ->image()
+                    ->directory('artikels'),
+                DatePicker::make('published_at')
+                    ->label('Tanggal Publikasi'),
             ]);
     }
 }

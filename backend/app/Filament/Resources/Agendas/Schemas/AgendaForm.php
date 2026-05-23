@@ -6,7 +6,6 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class AgendaForm
@@ -16,13 +15,21 @@ class AgendaForm
         return $schema
             ->components([
                 TextInput::make('event_name')
+                    ->label('Nama Acara / Event')
                     ->required(),
-                DatePicker::make('start_date'),
-                DatePicker::make('end_date'),
-                TextInput::make('location'),
-                Textarea::make('description')
+                DatePicker::make('start_date')
+                    ->label('Tanggal Mulai'),
+                DatePicker::make('end_date')
+                    ->label('Tanggal Selesai'),
+                TextInput::make('location')
+                    ->label('Lokasi / Tempat'),
+                RichEditor::make('description')
+                    ->label('Deskripsi Acara')
                     ->columnSpanFull(),
-                TextInput::make('poster'),
+                FileUpload::make('poster')
+                    ->label('Poster Acara')
+                    ->image()
+                    ->directory('agendas'),
             ]);
     }
 }

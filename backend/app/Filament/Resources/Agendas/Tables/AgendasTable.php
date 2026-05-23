@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class AgendasTable
@@ -14,24 +15,25 @@ class AgendasTable
     {
         return $table
             ->columns([
+                ImageColumn::make('poster')
+                    ->label('Poster'),
                 TextColumn::make('event_name')
+                    ->label('Nama Acara')
                     ->searchable(),
                 TextColumn::make('start_date')
-                    ->date()
+                    ->label('Tanggal Mulai')
+                    ->date('d M Y')
                     ->sortable(),
                 TextColumn::make('end_date')
-                    ->date()
+                    ->label('Tanggal Selesai')
+                    ->date('d M Y')
                     ->sortable(),
                 TextColumn::make('location')
-                    ->searchable(),
-                TextColumn::make('poster')
+                    ->label('Lokasi')
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Dibuat Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

@@ -5,7 +5,6 @@ namespace App\Filament\Resources\Umkms\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class UmkmForm
@@ -15,14 +14,24 @@ class UmkmForm
         return $schema
             ->components([
                 TextInput::make('business_name')
+                    ->label('Nama Usaha / UMKM')
                     ->required(),
-                TextInput::make('owner_name'),
-                TextInput::make('category'),
-                TextInput::make('contact_wa'),
-                TextInput::make('ecommerce_link'),
-                Textarea::make('product_description')
+                TextInput::make('owner_name')
+                    ->label('Nama Pemilik'),
+                TextInput::make('category')
+                    ->label('Kategori Produk / Kuliner'),
+                TextInput::make('contact_wa')
+                    ->label('Nomor WhatsApp (Aktif)')
+                    ->helperText('Contoh: 628123456789 (gunakan kode negara 62)'),
+                TextInput::make('ecommerce_link')
+                    ->label('Tautan E-Commerce (Shopee/Tokopedia/dll)'),
+                RichEditor::make('product_description')
+                    ->label('Deskripsi Produk / Usaha')
                     ->columnSpanFull(),
-                TextInput::make('photo'),
+                FileUpload::make('photo')
+                    ->label('Foto Produk / Toko')
+                    ->image()
+                    ->directory('umkms'),
             ]);
     }
 }

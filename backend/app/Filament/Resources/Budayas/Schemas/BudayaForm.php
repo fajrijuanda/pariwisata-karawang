@@ -5,7 +5,6 @@ namespace App\Filament\Resources\Budayas\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class BudayaForm
@@ -15,13 +14,21 @@ class BudayaForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label('Nama Seni / Budaya')
                     ->required(),
-                TextInput::make('category'),
-                Textarea::make('description')
+                TextInput::make('category')
+                    ->label('Kategori Budaya'),
+                RichEditor::make('description')
+                    ->label('Deskripsi / Penjelasan Singkat')
                     ->columnSpanFull(),
-                Textarea::make('history')
+                RichEditor::make('history')
+                    ->label('Sejarah & Asal Usul')
                     ->columnSpanFull(),
-                Textarea::make('photo_gallery')
+                FileUpload::make('photo_gallery')
+                    ->label('Galeri Foto / Dokumentasi')
+                    ->image()
+                    ->multiple()
+                    ->directory('budayas')
                     ->columnSpanFull(),
             ]);
     }

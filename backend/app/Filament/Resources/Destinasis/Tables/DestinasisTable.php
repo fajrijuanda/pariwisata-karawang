@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class DestinasisTable
@@ -14,22 +15,24 @@ class DestinasisTable
     {
         return $table
             ->columns([
+                ImageColumn::make('photo_gallery')
+                    ->label('Foto Wisata')
+                    ->circular(),
                 TextColumn::make('name')
+                    ->label('Nama Destinasi')
                     ->searchable(),
                 TextColumn::make('category')
+                    ->label('Kategori')
                     ->searchable(),
                 TextColumn::make('htm')
+                    ->label('HTM')
                     ->searchable(),
                 TextColumn::make('open_hours')
-                    ->searchable(),
-                TextColumn::make('map_coordinates')
+                    ->label('Jam Operasional')
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Dibuat Pada')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
