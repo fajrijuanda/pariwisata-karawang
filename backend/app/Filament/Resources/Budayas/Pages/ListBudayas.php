@@ -6,6 +6,8 @@ use App\Filament\Resources\Budayas\BudayaResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
+use App\Filament\Resources\Budayas\Widgets\BudayaStats;
+
 class ListBudayas extends ListRecords
 {
     protected static string $resource = BudayaResource::class;
@@ -14,6 +16,13 @@ class ListBudayas extends ListRecords
     {
         return [
             CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            BudayaStats::class,
         ];
     }
 }

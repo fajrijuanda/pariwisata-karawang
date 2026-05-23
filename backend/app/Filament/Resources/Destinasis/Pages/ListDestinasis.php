@@ -6,6 +6,8 @@ use App\Filament\Resources\Destinasis\DestinasiResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
+use App\Filament\Resources\Destinasis\Widgets\DestinasiStats;
+
 class ListDestinasis extends ListRecords
 {
     protected static string $resource = DestinasiResource::class;
@@ -14,6 +16,13 @@ class ListDestinasis extends ListRecords
     {
         return [
             CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            DestinasiStats::class,
         ];
     }
 }

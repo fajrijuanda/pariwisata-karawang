@@ -6,6 +6,8 @@ use App\Filament\Resources\Umkms\UmkmResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
+use App\Filament\Resources\Umkms\Widgets\UmkmStats;
+
 class ListUmkms extends ListRecords
 {
     protected static string $resource = UmkmResource::class;
@@ -14,6 +16,13 @@ class ListUmkms extends ListRecords
     {
         return [
             CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            UmkmStats::class,
         ];
     }
 }
