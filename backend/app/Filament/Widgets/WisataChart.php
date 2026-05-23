@@ -13,8 +13,6 @@ class WisataChart extends ChartWidget
 {
     protected static ?string $heading = 'Sebaran Data Portal Pariwisata';
 
-    protected string|array|null $color = 'primary';
-
     protected function getData(): array
     {
         return [
