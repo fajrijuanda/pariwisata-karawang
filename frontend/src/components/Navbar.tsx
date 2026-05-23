@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { ADMIN_URL } from '../utils/api';
 
 export default function Navbar() {
   return (
@@ -20,7 +21,7 @@ export default function Navbar() {
         <Link href="/agenda" className="hover:text-primary transition-colors">Agenda</Link>
       </nav>
       <div className="flex items-center gap-4">
-        <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noreferrer" className="hidden md:block text-sm font-medium hover:text-primary">Admin Panel</a>
+        <a href={ADMIN_URL} target="_blank" rel="noreferrer" className="hidden md:block text-sm font-medium hover:text-primary">Admin Panel</a>
         <Link href="/destinasi" className="px-4 py-2 bg-secondary text-white text-sm font-semibold rounded-full shadow hover:bg-opacity-90 hover:scale-105 transition-all duration-300">
           Eksplor Sekarang
         </Link>

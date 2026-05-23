@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
+import { API_BASE_URL } from '../utils/api';
 
 async function getData() {
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/destinasis', { next: { revalidate: 0 } });
+    const res = await fetch(`${API_BASE_URL}/api/destinasis`, { next: { revalidate: 0 } });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {

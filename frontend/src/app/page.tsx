@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { API_BASE_URL } from '../utils/api';
 
 // Type definitions for API response
 type Destinasi = {
@@ -13,7 +14,7 @@ type Destinasi = {
 // Fetch data function
 async function getDestinasis() {
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/destinasis', { next: { revalidate: 60 } });
+    const res = await fetch(`${API_BASE_URL}/api/destinasis`, { next: { revalidate: 60 } });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
