@@ -11,7 +11,10 @@ use Filament\Widgets\ChartWidget;
 
 class WisataChart extends ChartWidget
 {
-    protected static ?string $heading = 'Sebaran Data Portal Pariwisata';
+    public function getHeading(): string
+    {
+        return 'Sebaran Data Portal Pariwisata';
+    }
 
     protected function getData(): array
     {
