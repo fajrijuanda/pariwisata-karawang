@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pariwisata Karawang - Portal Informasi Wisata, Budaya & UMKM",
-  description: "Portal resmi Sistem Informasi Pariwisata Kabupaten Karawang. Temukan informasi destinasi wisata alam, sejarah, seni budaya, katalog produk UMKM unggulan, serta kalender agenda acara menarik.",
+  title: "Aizu Karawang - Wisata, Budaya & UMKM",
+  description: "Portal informasi wisata, budaya, UMKM, agenda, dan artikel Kabupaten Karawang dengan pengalaman visual modern.",
 };
 
 import Navbar from "@/components/Navbar";
@@ -27,10 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-zinc-50 dark:bg-zinc-900">
+      <body className="min-h-full flex flex-col font-sans cosmic-page">
         <Navbar />
         {children}
         <Footer />

@@ -4,27 +4,27 @@ import { ADMIN_URL } from '../utils/api';
 
 export default function Navbar() {
   return (
-    <header className="w-full py-4 px-6 md:px-12 bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm flex items-center justify-between sticky top-0 z-50">
-      <div className="flex items-center gap-2">
+    <header className="sticky top-0 z-50 w-full px-4 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-white/10 bg-[#100825]/70 px-4 py-3 shadow-2xl shadow-black/25 backdrop-blur-xl">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:bg-secondary transition-colors duration-300">
-            K
+          <div className="grid h-9 w-9 place-items-center rounded-full bg-[radial-gradient(circle_at_35%_30%,#fff,#ad7cff_32%,#4c12b9_76%)] text-sm font-black text-white shadow-[0_0_28px_rgba(155,92,255,.65)]">
+            A
           </div>
-          <span className="text-xl font-semibold text-primary dark:text-white group-hover:text-secondary transition-colors duration-300">Pariwisata Karawang</span>
+          <span className="text-sm font-bold text-white md:text-base">Aizu Karawang</span>
         </Link>
-      </div>
-      <nav className="hidden md:flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-300">
-        <Link href="/" className="hover:text-primary transition-colors">Beranda</Link>
-        <Link href="/destinasi" className="hover:text-primary transition-colors">Destinasi</Link>
-        <Link href="/budaya" className="hover:text-primary transition-colors">Budaya & Seni</Link>
-        <Link href="/umkm" className="hover:text-primary transition-colors">UMKM</Link>
-        <Link href="/agenda" className="hover:text-primary transition-colors">Agenda</Link>
-      </nav>
-      <div className="flex items-center gap-4">
-        <a href={ADMIN_URL} target="_blank" rel="noreferrer" className="hidden md:block text-sm font-medium hover:text-primary">Admin Panel</a>
-        <Link href="/destinasi" className="px-4 py-2 bg-secondary text-white text-sm font-semibold rounded-full shadow hover:bg-opacity-90 hover:scale-105 transition-all duration-300">
-          Eksplor Sekarang
-        </Link>
+
+        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 text-xs font-semibold text-[#d7c8ff] md:flex">
+          <Link href="/" className="rounded-full px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">Home</Link>
+          <Link href="/destinasi" className="rounded-full px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">Destinasi</Link>
+          <Link href="/budaya" className="rounded-full px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">Budaya</Link>
+          <Link href="/umkm" className="rounded-full px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">UMKM</Link>
+          <Link href="/agenda" className="rounded-full px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">Agenda</Link>
+          <Link href="/artikel" className="rounded-full px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">Artikel</Link>
+        </nav>
+
+        <a href={ADMIN_URL} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-white/10">
+          Admin
+        </a>
       </div>
     </header>
   );
